@@ -1,9 +1,12 @@
 # https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: whoami-svc-deployment
 spec:
+  selector:
+    matchLabels:
+      app: whoami-svc
   replicas: 1
   template:
     metadata:
@@ -13,7 +16,7 @@ spec:
     spec:
       containers:
         - name: whoami-svc
-          image: boboweike/whoami-svc
+          image: staffjoy/whoami-svc
           imagePullPolicy: Never
           ports:
             - name: http-port

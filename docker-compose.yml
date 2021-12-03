@@ -3,7 +3,7 @@ version: '3.7'
 services:
   account-service:
     build: ./account-svc
-    image: boboweike/account-svc
+    image: staffjoy/account-svc
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -25,7 +25,7 @@ services:
 
   company-service:
     build: ./company-svc
-    image: boboweike/company-svc
+    image: staffjoy/company-svc
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -46,7 +46,7 @@ services:
 
   bot-service:
     build: ./bot-svc
-    image: boboweike/bot-svc
+    image: staffjoy/bot-svc
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -63,7 +63,7 @@ services:
 
   email-service:
     build: ./mail-svc
-    image: boboweike/mail-svc
+    image: staffjoy/mail-svc
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -83,7 +83,7 @@ services:
 
   whoami-service:
     build: ./whoami-svc
-    image: boboweike/whoami-svc
+    image: staffjoy/whoami-svc
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -109,7 +109,7 @@ services:
 
   www-service:
     build: ./web-app
-    image: boboweike/www-svc
+    image: staffjoy/www-svc
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -129,9 +129,9 @@ services:
 
   faraday-service:
     build: ./faraday
-    image: boboweike/faraday-svc
+    image: staffjoy/faraday-svc
     ports:
-      - 80:80
+      - "80:80"
     environment:
       - SPRING_PROFILES_ACTIVE
       - SERVER_PORT
@@ -149,20 +149,20 @@ services:
       - internal_access
       - external_access
 
-
   myaccount-service:
-    build:
-      context: ./frontend
-      dockerfile: myaccount/Dockerfile
-    image: boboweike/myaccount-spa
+#    build:
+#      context: ./frontend
+#      dockerfile: myaccount/Dockerfile
+    image: staffjoy/myaccount-spa
     networks:
       - internal_access
 
+
   app-service:
-    build:
-      context: ./frontend
-      dockerfile: app/Dockerfile
-    image: boboweike/app-spa
+#    build:
+#      context: ./frontend
+#      dockerfile: app/Dockerfile
+    image: staffjoy/app-spa
     networks:
       - internal_access
 

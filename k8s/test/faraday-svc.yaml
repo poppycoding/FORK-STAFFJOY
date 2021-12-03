@@ -1,10 +1,13 @@
 # https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
 # https://stackoverflow.com/questions/53775328/kubernetes-port-forwarding-error-listen-tcp4-127-0-0-188-bind-permission-de
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: faraday-svc-deployment
 spec:
+  selector:
+    matchLabels:
+      app: faraday-svc
   replicas: 1
   template:
     metadata:
@@ -14,7 +17,7 @@ spec:
     spec:
       containers:
         - name: faraday-svc
-          image: boboweike/faraday-svc
+          image: staffjoy/faraday-svc
           imagePullPolicy: Never
           ports:
             - name: http-port

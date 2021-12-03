@@ -1,9 +1,12 @@
 # https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-apiversion-definition-guide.html
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: company-svc-deployment
 spec:
+  selector:
+    matchLabels:
+      app: company-svc
   replicas: 1
   template:
     metadata:
@@ -13,7 +16,7 @@ spec:
     spec:
       containers:
         - name: company-svc
-          image: boboweike/company-svc
+          image: staffjoy/company-svc
           imagePullPolicy: Never
           ports:
             - name: http-port
